@@ -3,6 +3,7 @@
 namespace App\Livewire\Almacen;
 
 use App\Filament\Imports\ProductImporter;
+use App\Models\Category;
 use App\Models\Product;
 use EightyNine\ExcelImport\ExcelImportAction;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -11,6 +12,7 @@ use Filament\Tables;
 use Filament\Tables\Actions\ImportAction;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
+use Filament\Tables\Filters\SelectFilter;
 use Filament\Tables\Table;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
@@ -45,7 +47,7 @@ class ListProducts extends Component implements HasForms, HasTable
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('category.name')
-                    ->numeric()
+                    ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
@@ -65,7 +67,10 @@ class ListProducts extends Component implements HasForms, HasTable
                     ->importer(ProductImporter::class)
             ])
             ->filters([
-                //
+                SelectFilter::make('category_id')
+                    ->label('Categoria')
+                    ->options(Category::query()->pluck('name', 'id'))
+                    ->native(false)
             ])
             ->actions([
                 //
