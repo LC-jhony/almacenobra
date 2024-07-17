@@ -31,24 +31,32 @@ class ListProducts extends Component implements HasForms, HasTable
             ->striped()
             ->columns([
                 Tables\Columns\TextColumn::make('code')
+                ->label('COD.')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
+                ->label('DESCRIPCION')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('pu')
+                ->label('P.U.')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('um')
+                ->label('U.M.')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('oc')
+                ->label('O/C')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('quantity')
+                ->label('Saldo')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('category.name')
+                ->label('')
                     ->searchable()
-                    ->sortable(),
+                    ->sortable()
+                    ->toggleable(isToggledHiddenByDefault: true),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
                     ->sortable()
@@ -60,11 +68,11 @@ class ListProducts extends Component implements HasForms, HasTable
             ])
             ->headerActions([
 
-                ImportAction::make()
-                    ->label('Importar materiales')
-                    ->icon('heroicon-o-arrow-up-tray')
-                    ->color('success')
-                    ->importer(ProductImporter::class)
+                // ImportAction::make()
+                //     ->label('Importar materiales')
+                //     ->icon('heroicon-o-arrow-up-tray')
+                //     ->color('success')
+                //     ->importer(ProductImporter::class)
             ])
             ->filters([
                 SelectFilter::make('category_id')

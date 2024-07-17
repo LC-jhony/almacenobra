@@ -7,13 +7,14 @@ use Filament\Forms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
-use Livewire\Component;
 use Illuminate\Contracts\View\View;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class EditProduct extends Component implements HasForms
 {
     use InteractsWithForms;
-
+    #[Layout("layouts.app")]
     public ?array $data = [];
 
     public Product $record;

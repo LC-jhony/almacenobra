@@ -9,14 +9,17 @@ use Filament\Forms\Components\Section;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
-use Livewire\Component;
+use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class CreateProduct extends Component implements HasForms
 {
     use InteractsWithForms;
-
+    #[Layout("layouts.app")]
     public ?array $data = [];
+
 
     public function mount(): void
     {
@@ -30,6 +33,14 @@ class CreateProduct extends Component implements HasForms
                 Section::make("Materiales")
                     ->description("Registra los materiales")
                     ->schema([
+                        Forms\Components\TextInput::make('quantity')
+                            ->required()
+                            ->numeric(),
+                        Forms\Components\Select::make('category_id')
+                            ->relationship('category', 'name')
+                            ->required()
+                            ->native(false),
+
                         Card::make("")
                             ->schema([
                                 Forms\Components\TextInput::make('code')
@@ -52,13 +63,7 @@ class CreateProduct extends Component implements HasForms
                                     ->required()
                                     ->numeric(),
                             ])->columns(3),
-                        Forms\Components\TextInput::make('quantity')
-                            ->required()
-                            ->numeric(),
-                        Forms\Components\Select::make('category_id')
-                            ->relationship('category', 'name')
-                            ->required()
-                            ->native(false)
+
 
                     ])->columns(2)
             ])
@@ -73,6 +78,16 @@ class CreateProduct extends Component implements HasForms
         $record = Product::create($data);
 
         $this->form->model($record)->saveRelationships();
+
+        $this->getSavedNotification()->send();
+    }
+    protected function getSavedNotification(): Notification
+    {
+        return Notification::make()
+            ->success()
+            ->title(__('Material'))
+            ->body(__('Material registrado correctamente'))
+            ->success();
     }
 
     public function render(): View

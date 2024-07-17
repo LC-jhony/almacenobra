@@ -46,21 +46,21 @@ class CreateCategory extends Component implements HasForms
         $record = Category::create($data);
 
         $this->form->model($record)->saveRelationships();
-        
+
         $this->getSavedNotification()->send();
     }
     protected function getSavedNotification(): Notification
     {
         return Notification::make()
             ->success()
-            ->title(__('Material'))
-            ->body(__('Material registrado correctamente'))
+            ->title(__('Categoria'))
+            ->body(__('Categoria registrado correctamente'))
             ->success();
     }
 
     public function render(): View
     {
-        return view('livewire.amacen.categories.creat-category', [
+        return view('livewire.almacen.categories.creat-category', [
             'categories' => Category::all(),
         ]);
     }
