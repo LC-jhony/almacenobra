@@ -17,9 +17,11 @@ return new class extends Migration
             $table->string('name');
             $table->decimal('pu', 10, 2);
             $table->string('um');
-            $table->integer('oc');
+            // $table->integer('oc');
+            $table->unsignedBigInteger('order_id')->nullable();
             $table->decimal('quantity', 10, 2);
             $table->unsignedBigInteger('category_id');
+            $table->foreign('order_id')->references('id')->on('order_parchuses')->onDelete('cascade');
             $table->foreign('category_id')->references('id')->on('categories')->onDelete('cascade');
             $table->timestamps();
         });

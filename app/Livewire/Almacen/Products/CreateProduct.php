@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Almacen\Products;
 
+use App\Models\OrderParchuse;
 use App\Models\Product;
 use Filament\Forms;
 use Filament\Forms\Components\Card;
@@ -59,9 +60,11 @@ class CreateProduct extends Component implements HasForms
                                 Forms\Components\TextInput::make('um')
                                     ->required()
                                     ->maxLength(255),
-                                Forms\Components\TextInput::make('oc')
+                                Forms\Components\Select::make('order_id')
+                                    ->options(OrderParchuse::query()->pluck('number', 'id')->toArray())
                                     ->required()
-                                    ->numeric(),
+                                    ->native(false),
+
                             ])->columns(3),
 
 
@@ -78,6 +81,8 @@ class CreateProduct extends Component implements HasForms
         $record = Product::create($data);
 
         $this->form->model($record)->saveRelationships();
+
+        $this->reset();
 
         $this->getSavedNotification()->send();
     }

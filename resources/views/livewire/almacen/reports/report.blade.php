@@ -4,39 +4,53 @@
         {{ $this->form }}
     </form>
     <h2 class="text-xl font-bold">{{ $monthName }}</h2>
-    <table class="border border-indigo-600 ">
-        <thead class="border border-indigo-600 ">
-            <th scope="col" class="border border-indigo-600 ">COD.</th>
-            <th scope="col" class="border border-indigo-600 ">DESCRIPCION</th>
-            <th scope="col" class="border border-indigo-600 ">P.U</th>
-            <th scope="col" class="border border-indigo-600 ">U.M</th>
-            <th scope="col" class="border border-indigo-600 ">O/C</th>
-            @for ($i = 1; $i <= $daysInMonth; $i++)
-                <th class="border border-indigo-600 uppercase">
-                    {{ substr(\Carbon\Carbon::createFromDate(null, $month, $i)->translatedFormat('D'), 0, 1) }}
-                    <p class="border-t border-indigo-500">{{ $i }}</p>
-                </th>
-            @endfor
-            </tr>
-        </thead>
-        <tbody>
-            @foreach ($categoriesWithProducts as $category)
-                <tr class="">
-                    <td class="border border-indigo-600 ">{{ $category->id }}</td>
-                    <td class="border border-indigo-600 " colspan="36">{{ $category->name }}</td>
+    <div class="bg-white mt-6">
+        <table class="divide-y divide-gray-200 dark:divide-none">
+            <thead class="bg-green-600">
+                <th class="p-2 text-start uppercase text-white font-medium text-xs border border-white">COD.</th>
+                <th class="p-2 text-start uppercase text-white font-medium text-xs border border-white">DESCRIPCION</th>
+                <th class="p-2 text-start uppercase text-white font-medium text-xs border border-white">P.U</th>
+                <th class="p-2 text-start uppercase text-white font-medium text-xs border border-white">U.M</th>
+                <th class="p-2 text-start uppercase text-white font-medium text-xs border border-white">Entrada y salida
+                    </>
+                <th class="p-2 text-start uppercase text-white font-medium text-xs border border-white">O/C</th>
+                @for ($i = 1; $i <= $daysInMonth; $i++)
+                    <th class="p-2 text-start uppercase text-white font-medium text-xs border border-white">
+                        {{ substr(\Carbon\Carbon::createFromDate(null, $month, $i)->translatedFormat('D'), 0, 1) }}
+                        <p class="border-t border-white">{{ $i }}</p>
+                    </th>
+                @endfor
                 </tr>
-                @foreach ($category->products as $product)
-                    <tr class="">
-                        <td class="border border-indigo-600 ">{{ $product->code }}</td>
-                        <td class="border border-indigo-600 ">{{ $product->name }}</td>
-                        <td class="border border-indigo-600 ">{{ $product->pu }}</td>
-                        <td class="border border-indigo-600 ">{{ $product->um }}</td>
-                        <td class="border border-indigo-600 ">{{ $product->oc }}</td>
+            </thead>
+            <tbody "bg-white divide-y divide-gray-200 border border-rose-100">
+                @foreach ($categoriesWithProducts as $category)
+                    <tr class="text-white font-medium text-xs uppercase">
+                        <td class="border
+                    border-slate-100 bg-neutral-400 text-white">
+                            {{ $category->id }}
+                        </td>
+                        <td class="border border-slate-100 bg-neutral-400 text-white" colspan="36">
+                            {{ $category->name }}
+                        </td>
                     </tr>
+                    @foreach ($category->products as $product)
+                        <tr class="">
+                            <td rowspan="2" class="border border-slate-100">{{ $product->code }}
+                            </td>
+                            <td rowspan="2" class="border border-slate-100">{{ $product->name }}
+                            </td>
+                            <td rowspan="2" class="border border-slate-100">{{ $product->pu }}
+                            </td>
+                            <td rowspan="2" class="border border-slate-100">{{ $product->um }}
+                            </td>
+                            <td class="border border-slate-100">Entrada</td>
+                            <td rowspan="2" class="border border-slate-100 p-2">{{ $product->order->number }}</td>
+                        </tr>
+                        <td class="border border-slate-100 bg-neutral-400 text-white">Salida</td>
+                    @endforeach
                 @endforeach
-            @endforeach
-        </tbody>
+            </tbody>
 
-    </table>
-
+        </table>
+    </div>
 </x-bree.container>

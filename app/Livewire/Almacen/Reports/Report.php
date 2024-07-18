@@ -52,7 +52,7 @@ class Report extends Component implements HasForms
                                 '04' => 'April',
                                 '05' => 'May',
                                 '06' => 'June',
-                                '07' => 'July',
+                                '07' => 'Julio',
                                 '08' => 'August',
                                 '09' => 'September',
                                 '10' => 'October',

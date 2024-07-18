@@ -15,8 +15,11 @@
                     <x-nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
                         {{ __('Dashboard') }}
                     </x-nav-link>
-                    <x-nav-link :href="route('category.create')" :active="request()->routeIs('category.create')" wire:navigate>
+                    <x-nav-link :href="route('list.category')" :active="request()->routeIs('list.category')" wire:navigate>
                         {{ __('Categoria') }}
+                    </x-nav-link>
+                    <x-nav-link :href="route('list.order')" :active="request()->routeIs('list.order')" wire:navigate>
+                        {{ __('Ordenes') }}
                     </x-nav-link>
                     <x-nav-link :href="route('list.products')" :active="request()->routeIs('list.products')" wire:navigate>
                         {{ __('Productos') }}
