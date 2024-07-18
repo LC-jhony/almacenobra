@@ -1,6 +1,6 @@
 <x-bree.container>
     <form wire:submit='filter'>
-        <button type="submit" class="px-4 py-3 bg-green-500 text-white rounded-lg">Filtrar</button>
+
         {{ $this->form }}
     </form>
     <h2 class="text-xl font-bold">{{ $monthName }}</h2>
