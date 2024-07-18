@@ -4,7 +4,7 @@
         {{ $this->form }}
     </form>
     <h2 class="text-xl font-bold">{{ $monthName }}</h2>
-    <div class="bg-white mt-6">
+  
         <table class="divide-y divide-gray-200 dark:divide-none">
             <thead class="bg-green-600">
                 <th class="p-2 text-start uppercase text-white font-medium text-xs border border-white">COD.</th>
@@ -52,5 +52,5 @@
             </tbody>
 
         </table>
-    </div>
+  
 </x-bree.container>

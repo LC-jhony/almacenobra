@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Almacen\Reports;
 
+use App\Enum\MonthType;
 use App\Models\Category;
 use App\Models\Product;
 use Carbon\Carbon;
@@ -45,20 +46,21 @@ class Report extends Component implements HasForms
                     ->schema([
                         Forms\Components\Select::make('month')
                             ->label('Mese')
-                            ->options([
-                                '01' => 'January',
-                                '02' => 'February',
-                                '03' => 'March',
-                                '04' => 'April',
-                                '05' => 'May',
-                                '06' => 'June',
-                                '07' => 'Julio',
-                                '08' => 'August',
-                                '09' => 'September',
-                                '10' => 'October',
-                                '11' => 'November',
-                                '12' => 'December',
-                            ])
+                            ->options(MonthType::class)
+                            // ->options([
+                            //     '01' => 'January',
+                            //     '02' => 'February',
+                            //     '03' => 'March',
+                            //     '04' => 'April',
+                            //     '05' => 'May',
+                            //     '06' => 'June',
+                            //     '07' => 'Julio',
+                            //     '08' => 'August',
+                            //     '09' => 'September',
+                            //     '10' => 'October',
+                            //     '11' => 'November',
+                            //     '12' => 'December',
+                            // ])
                             ->searchable()
                             ->native(false)
                             ->reactive()
