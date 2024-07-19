@@ -24,6 +24,9 @@
                     <x-nav-link :href="route('list.products')" :active="request()->routeIs('list.products')" wire:navigate>
                         {{ __('Productos') }}
                     </x-nav-link>
+                    <x-nav-link :href="route('list.movement')" :active="request()->routeIs('list.movement')" wire:navigate>
+                        {{ __('Movimiento') }}
+                    </x-nav-link>
                     <x-nav-link :href="route('report')" :active="request()->routeIs('report')" wire:navigate>
                         {{ __('Reporte') }}
                     </x-nav-link>

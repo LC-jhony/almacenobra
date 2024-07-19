@@ -7,6 +7,8 @@ use App\Models\OrderParchuse;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\BelongsToMany;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 class Product extends Model
 {
@@ -35,4 +37,17 @@ class Product extends Model
             foreignKey: 'category_id'
         );
     }
+    public function movementproduct(): HasMany
+    {
+        return $this->hasMany(ProductMovement::class);
+    }
+    // public function movement(): BelongsToMany
+    // {
+    //     return $this->belongsToMany(
+    //         Movement::class,
+    //         'product_movement'
+    //     )
+    //         ->withPivot('quantity')
+    //         ->withTimestamps();
+    // }
 }
