@@ -37,7 +37,9 @@ class ListMovement extends Component implements HasForms, HasTable
                     ->searchable()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('order.number')
+                    ->placeholder('N/A')
                     ->searchable()
+
                     ->sortable(),
                 Tables\Columns\TextColumn::make('created_at')
                     ->dateTime()
