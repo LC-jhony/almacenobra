@@ -7,20 +7,18 @@ use App\Models\Movement;
 use App\Models\OrderParchuse;
 use App\Models\Product;
 use Filament\Forms;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
-use Laravel\SerializableClosure\Serializers\Native;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-class CreateMovement extends Component implements HasForms
+class CreateInputMaterial extends Component implements HasForms
 {
     use InteractsWithForms;
+
     #[Layout("layouts.app")]
 
     public ?array $data = [];
@@ -35,7 +33,7 @@ class CreateMovement extends Component implements HasForms
     {
         return $form
             ->schema([
-                Section::make("Movimiento")
+                Forms\Components\Section::make("Movimiento")
                     ->description("registre movimiento de materiales")
                     ->schema([
                         Forms\Components\Select::make('tipo')
@@ -95,7 +93,6 @@ class CreateMovement extends Component implements HasForms
             ->statePath('data')
             ->model(Movement::class);
     }
-
     public function handleTipoChange($state): void
     {
         if ($state === 'entrada') {
@@ -121,6 +118,7 @@ class CreateMovement extends Component implements HasForms
             $set('quantity', 0);
         }
     }
+
     public function create(): void
     {
         $data = $this->form->getState();
@@ -128,7 +126,6 @@ class CreateMovement extends Component implements HasForms
         $record = Movement::create($data);
 
         $this->form->model($record)->saveRelationships();
-
         foreach ($record['movementproduct'] as $item) {
             $product = Product::find($item['product_id']);
             $product->quantity -= $item['quantity'];
@@ -146,9 +143,8 @@ class CreateMovement extends Component implements HasForms
             ->body(__('Movimiento registrado correctamente'))
             ->success();
     }
-
     public function render(): View
     {
-        return view('livewire.almacen.movements.create-movement');
+        return view('livewire.almacen.movements.create-input-material');
     }
 }

@@ -7,24 +7,20 @@ use App\Models\Movement;
 use App\Models\OrderParchuse;
 use App\Models\Product;
 use Filament\Forms;
-use Filament\Forms\Components\Repeater;
-use Filament\Forms\Components\Section;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Filament\Notifications\Notification;
 use Illuminate\Contracts\View\View;
-use Laravel\SerializableClosure\Serializers\Native;
 use Livewire\Attributes\Layout;
 use Livewire\Component;
 
-class CreateMovement extends Component implements HasForms
+class CreateOutputMaterial extends Component implements HasForms
 {
     use InteractsWithForms;
     #[Layout("layouts.app")]
 
     public ?array $data = [];
-    public $orderProducts = [];
 
     public function mount(): void
     {
@@ -35,29 +31,19 @@ class CreateMovement extends Component implements HasForms
     {
         return $form
             ->schema([
-                Section::make("Movimiento")
+                Forms\Components\Section::make("Movimiento")
                     ->description("registre movimiento de materiales")
                     ->schema([
                         Forms\Components\Select::make('tipo')
-                            ->label('Tipo')
+                            ->label('tipo')
                             ->options(MovementType::class)
                             ->required()
-                            ->native(false)
-                            ->reactive()
-                            ->afterStateUpdated(function ($state) {
-                                $this->handleTipoChange($state);
-                            }),
+                            ->native(false),
                         Forms\Components\Select::make('order_id')
                             ->label('Orden de compra')
                             ->options(OrderParchuse::pluck('number', 'id'))
                             ->nullable()
-                            ->native(false)
-                            ->reactive()
-                            ->afterStateUpdated(function ($state) {
-                                $this->handleOrderChange($state);
-                            }),
-                        Forms\Components\DateTimePicker::make('created_at')
-                            ->label('Created at')
+                            ->native(false),
                         // Forms\Components\DateTimePicker::make('created_at')
 
                         //     ->default(now())
@@ -69,26 +55,12 @@ class CreateMovement extends Component implements HasForms
                     ->schema([
                         Forms\Components\Select::make('product_id')
                             ->label('Material')
-                            ->searchable()
-                            ->options(function () {
-                                return collect($this->orderProducts)->pluck('name', 'id');
-                            })
+                            ->options(Product::query()->pluck('name', 'id'))
                             ->native(false)
-                            ->afterStateUpdated(
-                                function ($state, $get, $set) {
-                                    $this->updateQuantity(
-                                        $state,
-                                        $get,
-                                        $set
-                                    );
-                                }
-                            ),
+                            ->columnSpan(2),
+                        // Forms\Components\TextInput::make('movement_id'),
                         Forms\Components\TextInput::make('quantity')
-                            ->label('Cantidad a Mover')
-                            ->required()
-                            ->dehydrated()
-                            ->live(),
-
+                            ->label('Cantidad')
 
                     ])->columns(3)
             ])
@@ -96,31 +68,6 @@ class CreateMovement extends Component implements HasForms
             ->model(Movement::class);
     }
 
-    public function handleTipoChange($state): void
-    {
-        if ($state === 'entrada') {
-            $this->orderProducts = [];
-        }
-    }
-
-
-    public function handleOrderChange($state): void
-    {
-        if ($this->data['tipo'] === 'entrada' && $state) {
-            $this->orderProducts = OrderParchuse::find($state)->products->toArray();
-        } else {
-            $this->orderProducts = [];
-        }
-    }
-    public function updateQuantity($productId, $get, $set): void
-    {
-        $product = Product::find($productId);
-        if ($product) {
-            $set('quantity', $product->quantity);
-        } else {
-            $set('quantity', 0);
-        }
-    }
     public function create(): void
     {
         $data = $this->form->getState();
@@ -149,6 +96,6 @@ class CreateMovement extends Component implements HasForms
 
     public function render(): View
     {
-        return view('livewire.almacen.movements.create-movement');
+        return view('livewire.almacen.movements.create-output-material');
     }
 }
