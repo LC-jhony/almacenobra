@@ -1,4 +1,5 @@
 <x-bree.container>
+    <h1>salida</h1>
     <form wire:submit="create">
         {{ $this->form }}
         <div class="mt-4">

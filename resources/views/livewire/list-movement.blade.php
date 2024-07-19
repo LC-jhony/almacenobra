@@ -1,10 +1,10 @@
 <x-bree.container>
     <div class="flex justify-end mb-4 gap-5">
-        <x-filament::button href="{{ route('create.movement') }}" tag="a" color="warning"
+        <x-filament::button href="{{ route('create.output.movement') }}" tag="a" color="warning"
             icon="heroicon-o-arrow-up-tray">
             Registar Salida
         </x-filament::button>
-        <x-filament::button href="{{ route('create.movement') }}" tag="a" icon="heroicon-o-arrow-down-tray">
+        <x-filament::button href="{{ route('create.input.movement') }}" tag="a" icon="heroicon-o-arrow-down-tray">
             Registar Entrada
         </x-filament::button>
 

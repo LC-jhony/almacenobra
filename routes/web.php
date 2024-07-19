@@ -4,7 +4,9 @@ use App\Http\Controllers\ProfileController;
 use App\Livewire\Almacen\Categories\CreateCategory;
 use App\Livewire\Almacen\Categories\EditCategory;
 use App\Livewire\Almacen\ListProducts;
+use App\Livewire\Almacen\Movements\CreateInputMaterial;
 use App\Livewire\Almacen\Movements\CreateMovement;
+use App\Livewire\Almacen\Movements\CreateOutputMaterial;
 use App\Livewire\Almacen\Order\CreateOrder;
 use App\Livewire\Almacen\Order\EditOrder;
 use App\Livewire\Almacen\Products\CreateProduct;
@@ -36,7 +38,8 @@ Route::middleware('auth')->group(function () {
     Route::get('/product/edit/{}', EditProduct::class)->name('product.edit');
 
     Route::get('/movements', ListMovement::class)->name('list.movement');
-    Route::get('/movement/create', CreateMovement::class)->name('create.movement');
+    Route::get('/movement/create/input', CreateInputMaterial::class)->name('create.input.movement');
+    Route::get('/movement/create/output', CreateOutputMaterial::class)->name('create.output.movement');
 
     Route::get('/listorder', ListOrder::class)->name('list.order');
     Route::get('/order/create', CreateOrder::class)->name('create.order');
