@@ -25,8 +25,9 @@
             x-data="{ open: false }">
             <div class="flex flex-row items-center bg-zinc-100 justify-between flex-shrink-0 py-7 px-4">
                 <a href="#"
-                    class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline">Flowtrail
-                    UI</a>
+                    class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline">
+                    Flowtrail UI
+                </a>
                 <button class="rounded-lg md:hidden focus:outline-none focus:shadow-outline" @click="open = !open">
                     <svg fill="currentColor" viewBox="0 0 20 20" class="w-6 h-6">
                         <path x-show="!open" fill-rule="evenodd"
@@ -44,7 +45,6 @@
             <!-- Page Heading -->
             <header class="bg-zinc-100">
                 <div class=" mx-auto py-6 px-4 sm:px-7 lg:px-8">
-
                     <!-- Settings Dropdown -->
                     <div class="hidden justify-end sm:flex sm:items-center sm:ms-6">
                         <x-dropdown align="right" width="48">

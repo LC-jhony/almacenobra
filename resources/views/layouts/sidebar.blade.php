@@ -30,4 +30,5 @@
         <x-heroicon-o-arrow-trending-up class="w-5 h-5" />
         {{ __('Reporte') }}
     </x-bree.nav-link>
+
 </nav>
