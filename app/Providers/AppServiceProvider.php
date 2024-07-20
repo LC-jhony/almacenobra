@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Filament\Support\Facades\FilamentColor;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Color\Color;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,7 +22,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         FilamentColor::register([
-            'primary' => '#4f46e5',
+            'primary' => '#e7e5e4',
         ]);
+   
     }
 }

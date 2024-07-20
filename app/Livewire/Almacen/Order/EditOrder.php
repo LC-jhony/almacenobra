@@ -7,13 +7,14 @@ use Filament\Forms;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
-use Livewire\Component;
 use Illuminate\Contracts\View\View;
+use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class EditOrder extends Component implements HasForms
 {
     use InteractsWithForms;
-
+    #[Layout("layouts.admin")]
     public ?array $data = [];
 
     public OrderParchuse $record;

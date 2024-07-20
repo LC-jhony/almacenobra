@@ -4,7 +4,7 @@
             icon="heroicon-o-arrow-up-tray">
             Registar Salida
         </x-filament::button>
-        <x-filament::button href="{{ route('create.input.movement') }}" tag="a" icon="heroicon-o-arrow-down-tray">
+        <x-filament::button href="{{ route('create.input.movement') }}" tag="a" icon="heroicon-o-arrow-down-tray" class="bg-indigo-800 hover:bg-indigo-700">
             Registar Entrada
         </x-filament::button>
 

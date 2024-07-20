@@ -3,7 +3,7 @@
     <form wire:submit="create">
         {{ $this->form }}
         <div class="mt-4">
-            <x-filament::button type="submit">
+            <x-filament::button type="submit" class="bg-indigo-800 hover:bg-indigo-700">
                 Registrar movimiento
             </x-filament::button>
             <x-filament::button href="{{ route('list.movement') }}" tag="a" color="danger">

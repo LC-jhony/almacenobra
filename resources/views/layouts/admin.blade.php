@@ -38,19 +38,15 @@
                     </svg>
                 </button>
             </div>
-            <nav :class="{ 'block': open, 'hidden': !open }"
-                class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
-
-                eeeeee
-            </nav>
+            @include('layouts.sidebar')
         </div>
         <div class="w-full">
             <!-- Page Heading -->
             <header class="bg-zinc-100">
                 <div class=" mx-auto py-6 px-4 sm:px-7 lg:px-8">
-                  
+
                     <!-- Settings Dropdown -->
-                    <div class="hidden justify-end sm:flex sm:items-center sm:ms-6">             
+                    <div class="hidden justify-end sm:flex sm:items-center sm:ms-6">
                         <x-dropdown align="right" width="48">
                             <x-slot name="trigger">
                                 <button
@@ -84,7 +80,7 @@
                                         {{ __('Log Out') }}
                                     </x-dropdown-link>
                                 </form>
-                
+
                             </x-slot>
                         </x-dropdown>
                     </div>

@@ -23,7 +23,7 @@ class ListProducts extends Component implements HasForms, HasTable
 {
     use InteractsWithForms;
     use InteractsWithTable;
-    #[Layout("layouts.app")]
+    #[Layout("layouts.admin")]
     public function table(Table $table): Table
     {
         return $table
@@ -31,29 +31,29 @@ class ListProducts extends Component implements HasForms, HasTable
             ->striped()
             ->columns([
                 Tables\Columns\TextColumn::make('code')
-                ->label('COD.')
+                    ->label('COD.')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('name')
-                ->label('DESCRIPCION')
+                    ->label('DESCRIPCION')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('pu')
-                ->label('P.U.')
+                    ->label('P.U.')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('um')
-                ->label('U.M.')
+                    ->label('U.M.')
                     ->searchable(),
                 Tables\Columns\TextColumn::make('oc')
-                ->label('O/C')
+                    ->label('O/C')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('quantity')
-                ->label('Saldo')
+                    ->label('Saldo')
                     ->numeric()
                     ->sortable(),
                 Tables\Columns\TextColumn::make('category.name')
-                ->label('')
+                    ->label('')
                     ->searchable()
                     ->sortable()
                     ->toggleable(isToggledHiddenByDefault: true),

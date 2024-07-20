@@ -18,7 +18,7 @@ use Livewire\Component;
 class CreateOutputMaterial extends Component implements HasForms
 {
     use InteractsWithForms;
-    #[Layout("layouts.app")]
+    #[Layout("layouts.admin")]
 
     public ?array $data = [];
 

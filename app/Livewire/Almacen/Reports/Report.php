@@ -19,7 +19,7 @@ class Report extends Component implements HasForms
 {
     use InteractsWithForms;
     use WithPagination;
-    #[Layout("layouts.app")]
+    #[Layout("layouts.admin")]
     public $categoriesWithProducts;
     public $month;
     public $monthName;

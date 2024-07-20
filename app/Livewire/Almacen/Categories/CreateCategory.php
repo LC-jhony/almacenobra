@@ -16,7 +16,7 @@ use Livewire\Component;
 class CreateCategory extends Component implements HasForms
 {
     use InteractsWithForms;
-    #[Layout("layouts.app")]
+    #[Layout("layouts.admin")]
     public ?array $data = [];
 
     public function mount(): void

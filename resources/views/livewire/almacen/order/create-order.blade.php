@@ -2,7 +2,7 @@
     <form wire:submit="create">
         {{ $this->form }}
         <div class="mt-4">
-            <x-filament::button type="submit" class="mt-4">
+            <x-filament::button type="submit" class="bg-indigo-800 hover:bg-indigo-700">
                 Registar orden
             </x-filament::button>
             <x-filament::button color="danger" href="{{ route('list.order') }}"

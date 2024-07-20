@@ -19,7 +19,7 @@ class ListMovement extends Component implements HasForms, HasTable
     use InteractsWithForms;
     use InteractsWithTable;
 
-    #[Layout("layouts.app")]
+    #[Layout("layouts.admin")]
 
     public function table(Table $table): Table
     {
