@@ -54,7 +54,10 @@ class ListMovement extends Component implements HasForms, HasTable
                 //
             ])
             ->actions([
-                //
+                Tables\Actions\EditAction::make('edit')
+                    ->label('Editar'),
+                Tables\Actions\DeleteAction::make('delete')
+                    ->label('Eliminar'),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
