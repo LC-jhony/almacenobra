@@ -18,12 +18,12 @@
     @vite('resources/css/app.css')
 </head>
 
-<body class="font-sans antialiased bg-gray-200">
+<body class="font-sans antialiased bg-zinc-50">
     <div class="flex-col w-full md:flex md:flex-row md:min-h-screen">
         <div @click.away="open = false"
-            class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-zinc-100  md:w-64 dark:text-gray-200 dark:bg-gray-800"
+            class="flex flex-col flex-shrink-0 w-full text-gray-700 bg-zinc-50  md:w-64 dark:text-gray-200 dark:bg-gray-800"
             x-data="{ open: false }">
-            <div class="flex flex-row items-center bg-zinc-100 justify-between flex-shrink-0 py-7 px-4">
+            <div class="flex flex-row items-center bg-zinc-50 justify-between flex-shrink-0 py-7 px-4">
                 <a href="#"
                     class="text-lg font-semibold tracking-widest text-gray-900 uppercase rounded-lg dark:text-white focus:outline-none focus:shadow-outline">
                     Flowtrail UI
@@ -43,7 +43,7 @@
         </div>
         <div class="w-full">
             <!-- Page Heading -->
-            <header class="bg-zinc-100">
+            <header class="bg-zinc-50">
                 <div class=" mx-auto py-6 px-4 sm:px-7 lg:px-8">
                     <!-- Settings Dropdown -->
                     <div class="hidden justify-end sm:flex sm:items-center sm:ms-6">

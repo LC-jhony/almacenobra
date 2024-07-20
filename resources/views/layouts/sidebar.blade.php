@@ -1,4 +1,4 @@
-<nav :class="{ 'block': open, 'hidden': !open }" class="flex-grow px-4 pb-4 md:block md:pb-0 md:overflow-y-auto">
+<nav :class="{ 'block': open, 'hidden': !open }" class="flex-grow px-4 pb-4 mt-6 md:block md:pb-0 md:overflow-y-auto">
     <x-bree.nav-link :href="route('dashboard')" :active="request()->routeIs('dashboard')" wire:navigate>
         <x-heroicon-o-home class="w-5 h-5" />
         {{ __('Dashboard') }}
