@@ -3,16 +3,18 @@
 namespace App\Livewire;
 
 use App\Models\Movement;
+use App\Models\Product;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Tables;
+use Filament\Tables\Actions\Action;
 use Filament\Tables\Concerns\InteractsWithTable;
 use Filament\Tables\Contracts\HasTable;
 use Filament\Tables\Table;
-use Livewire\Component;
 use Illuminate\Contracts\View\View;
 use Illuminate\Database\Eloquent\Builder;
 use Livewire\Attributes\Layout;
+use Livewire\Component;
 
 class ListMovement extends Component implements HasForms, HasTable
 {
@@ -55,7 +57,13 @@ class ListMovement extends Component implements HasForms, HasTable
             ])
             ->actions([
                 Tables\Actions\EditAction::make('edit')
-                    ->label('Editar'),
+                    ->label('Editar')
+
+                    ->color('info'),
+                // Action::make('view')
+                //     ->url(fn (Movement $record): string => route('view.movement', $record))
+                //     ->color('success'),
+
                 Tables\Actions\DeleteAction::make('delete')
                     ->label('Eliminar'),
             ])
