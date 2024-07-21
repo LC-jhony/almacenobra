@@ -128,7 +128,7 @@ class CreateInputMaterial extends Component implements HasForms
         $this->form->model($record)->saveRelationships();
         foreach ($record['movementproduct'] as $item) {
             $product = Product::find($item['product_id']);
-            $product->quantity -= $item['quantity'];
+            $product->quantity;
             $product->save();
         }
         $this->reset();

@@ -3,7 +3,7 @@
 use App\Http\Controllers\ProfileController;
 use App\Livewire\Almacen\Categories\CreateCategory;
 use App\Livewire\Almacen\Categories\EditCategory;
-use App\Livewire\Almacen\ListProducts;
+
 use App\Livewire\Almacen\Movements\CreateInputMaterial;
 use App\Livewire\Almacen\Movements\CreateMovement;
 use App\Livewire\Almacen\Movements\CreateOutputMaterial;
@@ -16,7 +16,9 @@ use App\Livewire\Amacen\Categories\CreatCategory;
 use App\Livewire\ListCategory;
 use App\Livewire\ListMovement;
 use App\Livewire\ListOrder;
+use App\Livewire\ListProducts;
 use Illuminate\Support\Facades\Route;
+
 
 
 

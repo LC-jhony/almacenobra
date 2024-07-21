@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Almacen;
+namespace App\Livewire;
 
 use App\Filament\Imports\ProductImporter;
 use App\Models\Category;
@@ -93,6 +93,6 @@ class ListProducts extends Component implements HasForms, HasTable
 
     public function render(): View
     {
-        return view('livewire.almacen.list-products');
+        return view('livewire.list-products');
     }
 }
