@@ -41,6 +41,11 @@ class Product extends Model
     {
         return $this->hasMany(ProductMovement::class);
     }
+    public function movements(): HasMany
+    {
+        return $this->hasMany(ProductMovement::class);
+    }
+}
     // public function movement(): BelongsToMany
     // {
     //     return $this->belongsToMany(
@@ -50,4 +55,3 @@ class Product extends Model
     //         ->withPivot('quantity')
     //         ->withTimestamps();
     // }
-}

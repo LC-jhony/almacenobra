@@ -17,15 +17,7 @@ class Movement extends Model
         'tipo',
         'order_id'
     ];
-    // public function products(): BelongsToMany
-    // {
-    //     return $this->belongsToMany(
-    //         Product::class,
-    //         'product_movement'
-    //     )
-    //         ->withPivot('quantity')
-    //         ->withTimestamps();
-    // }
+
     public function movementproduct(): HasMany
     {
         return $this->hasMany(ProductMovement::class);
